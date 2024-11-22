@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+</head>
+<body>
+  <h1>Make Up List</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="search" placeholder="Search products..." value="{{ request.GET.search }}">
+    <button type="submit">Search</button>
+  </form>
+  <a href="{% url 'product_create' %}">Add New Product
+  </a>
+  <ul>
+    {% for product in products %}
+    <li>
+      <a href="{% url "product_detail" product.pk %}">{{ product.name }}</a>
+      ({{ product.category }} - ${{ product.price }})
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div>
+    {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
+
+    {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}">Next</a>
+    {% endif %}
+</div>
+</body>
+</html>

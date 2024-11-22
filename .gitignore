@@ -1,0 +1,36 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Django-related files
+# db.sqlite3
+*.log
+
+# Virtual environment
+venv/
+env/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE and editor-specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Static and media files
+staticfiles/
+media/
+
+# Environment variables
+.env
+*.env
+
+# Compiled or cache files
+*.egg-info/
+*.cache
+*.mo
+*.pot
